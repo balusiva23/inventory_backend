@@ -1,7 +1,8 @@
 const Product = require("../models/product");
 const Purchase = require("../models/purchase");
 const Sales = require("../models/sales");
-
+//new
+const ProductDatas = require("../models/productData");
 // Add Post
 const addProduct = (req, res) => {
   console.log("req: ", req.body.userId);
@@ -24,26 +25,46 @@ const addProduct = (req, res) => {
 };
 
 // Get All Products
+// const getAllProducts = async (req, res) => {
+//   const findAllProducts = await Product.find({
+//     userID: req.params.userId,
+//   }).sort({ _id: -1 }); // -1 for descending;
+//   res.json(findAllProducts);
+// };
+//New 
 const getAllProducts = async (req, res) => {
-  const findAllProducts = await Product.find({
-    userID: req.params.userId,
+  const findAllProducts = await ProductDatas.find({
+   
   }).sort({ _id: -1 }); // -1 for descending;
   res.json(findAllProducts);
 };
 
 // Delete Selected Product
+// const deleteSelectedProduct = async (req, res) => {
+//   const deleteProduct = await Product.deleteOne(
+//     { _id: req.params.id }
+//   );
+//   const deletePurchaseProduct = await Purchase.deleteOne(
+//     { ProductID: req.params.id }
+//   );
+
+//   const deleteSaleProduct = await Sales.deleteOne(
+//     { ProductID: req.params.id }
+//   );
+//   res.json({ deleteProduct, deletePurchaseProduct, deleteSaleProduct });
+// };
 const deleteSelectedProduct = async (req, res) => {
-  const deleteProduct = await Product.deleteOne(
+  const deleteProduct = await ProductDatas.deleteOne(
     { _id: req.params.id }
   );
-  const deletePurchaseProduct = await Purchase.deleteOne(
-    { ProductID: req.params.id }
-  );
+  // const deletePurchaseProduct = await Purchase.deleteOne(
+  //   { ProductID: req.params.id }
+  // );
 
-  const deleteSaleProduct = await Sales.deleteOne(
-    { ProductID: req.params.id }
-  );
-  res.json({ deleteProduct, deletePurchaseProduct, deleteSaleProduct });
+  // const deleteSaleProduct = await Sales.deleteOne(
+  //   { ProductID: req.params.id }
+  // );
+  res.json({ deleteProduct });
 };
 
 // Update Selected Product
