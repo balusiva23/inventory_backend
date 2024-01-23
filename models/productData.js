@@ -4,7 +4,7 @@ const productDataSchema = new mongoose.Schema({
   userID: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'users',
-    required: true,
+ 
   },
     fsn: { type: String, required: true },
     wid: { type: String, required: true },
